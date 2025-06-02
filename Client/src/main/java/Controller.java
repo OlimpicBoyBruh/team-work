@@ -1,4 +1,5 @@
-import ClientServers.ClServ;
+
+import com.clientserver.common.ClServ;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;

@@ -70,8 +70,7 @@ public class Controller implements Initializable {
         IP =  myIP.getHostAddress();
         return IP;
     }
-
-    // Метод для вывода предупреждения пользователю
+    
     private void showWarning(String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Ошибка ввода");

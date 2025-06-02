@@ -1,6 +1,8 @@
-import ClientServers.ClServ;
+
+import com.clientserver.common.ClServ;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -22,7 +24,6 @@ public class Controller implements Initializable {
     public String request;
     public String IP;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         im.setImage(new Image("image.png"));
@@ -32,14 +33,20 @@ public class Controller implements Initializable {
     }
 
     public void clOk(ActionEvent actionEvent) {
-        sity = fsity.getText();
+        sity = fsity.getText().trim();
+
+        // Проверка: поле пустое
+        if (sity.isEmpty()) {
+            showWarning("Введите название города.");
+            return;
+        }
+
         init();
         name.setText(request);
         temp.setText(response);
     }
 
     public void init() {
-
         try (ClServ module = new ClServ(IP, 2654)) {
             System.out.println("%Connected to server");
             request = sity;
@@ -62,5 +69,13 @@ public class Controller implements Initializable {
         }
         IP =  myIP.getHostAddress();
         return IP;
+    }
+    
+    private void showWarning(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Ошибка ввода");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

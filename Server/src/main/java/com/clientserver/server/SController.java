@@ -1,4 +1,6 @@
-import ClientServers.ClServ;
+package com.clientserver.server;
+
+import com.clientserver.common.ClServ;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 
@@ -61,4 +63,4 @@ public class SController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-}
+} 

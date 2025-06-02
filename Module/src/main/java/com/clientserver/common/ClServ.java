@@ -1,4 +1,4 @@
-package ClientServers;
+package com.clientserver.common;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -30,14 +30,12 @@ public class ClServ implements Closeable {
     }
 
     private BufferedReader createReader() throws IOException {
-
         return new BufferedReader(new InputStreamReader(socket.getInputStream()));
     }
 
     private BufferedWriter createWriter() throws IOException {
         return new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
     }
-
 
     public void writeLine(String massege) {
         try {
@@ -55,7 +53,6 @@ public class ClServ implements Closeable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
@@ -64,4 +61,4 @@ public class ClServ implements Closeable {
         reader.close();
         socket.close();
     }
-}
+} 

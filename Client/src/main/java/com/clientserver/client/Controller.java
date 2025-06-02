@@ -43,7 +43,7 @@ public class Controller implements Initializable {
     public void init() {
 
         try (ClServ module = new ClServ(IP, 2654)) {
-            System.out.println("Connected to server");
+            System.out.println("%Connected to server");
             request = sity;
             module.writeLine(request);
             request = module.readerLine();
@@ -60,7 +60,7 @@ public class Controller implements Initializable {
         try {
             myIP = InetAddress.getLocalHost();
         } catch (UnknownHostException e) {
-            System.out.println(" ошибка доступа ->" + e);
+            System.out.println("% ошибка доступа ->" + e);
         }
         IP =  myIP.getHostAddress();
         return IP;

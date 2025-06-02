@@ -12,7 +12,7 @@ public class Client extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/sample.fxml"));
-        primaryStage.setTitle("Гидрометцентр");
+        primaryStage.setTitle("%Гидрометцентр");
         primaryStage.setScene(new Scene(root, 550, 400));
         primaryStage.show();
     }

@@ -1,9 +1,11 @@
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.clientserver.common.ClServ;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -29,7 +31,6 @@ public class Controller implements Initializable {
     public String IP;
     public String ip;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -45,10 +46,13 @@ public class Controller implements Initializable {
     }
 
     public void clOk(ActionEvent actionEvent) {
-        sity = fsity.getText();
+
+        sity = fsity.getText().trim();;
 
         if(sity.isEmpty()) { // Проверка поля ввода города
             logger.warn("Город не указан!");
+          showWarning("Введите название города.");
+
             return;
         }
 
@@ -58,7 +62,6 @@ public class Controller implements Initializable {
     }
 
     public void init() {
-
         try (ClServ module = new ClServ(IP, 2654)) {
 
             logger.info("Подключение к серверу успешно установлено.");
@@ -89,5 +92,13 @@ public class Controller implements Initializable {
         }
         IP =  myIP.getHostAddress();
         return IP;
+    }
+    
+    private void showWarning(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Ошибка ввода");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
